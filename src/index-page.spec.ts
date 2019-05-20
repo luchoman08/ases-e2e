@@ -12,9 +12,15 @@ describe("Test index page", async function ()  {
         const title = await driver.getTitle();
         expect(title).to.equal('Campus Virtual');
     });
-    it('check the page login form', async () => {
+    it('check the page login form (I will intentionally fail) ', async () => {
         const form = driver.findElement(By.xpath("//form[@action='https://campusvirtual.univalle.edu.co/moodle/login/index.php']"));
-        expect(form).to.not.false;
+        const method = await form.getAttribute("method");
+        expect(method.toLocaleLowerCase()).to.be.eq("get");
+    });
+    it('check the page login form (I will intentionally fail) ', async () => {
+        const form = driver.findElement(By.xpath("//form[@action='https://campusvirtual.univalle.edu.co/moodle/login/index.php']"));
+        const method = await form.getAttribute("method");
+        expect(method.toLocaleLowerCase()).to.be.eq("post");
     });
     after(async () => {
         await driver.close();
