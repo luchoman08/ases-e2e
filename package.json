@@ -1,0 +1,24 @@
+{
+  "name": "ases-e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && mocha \"dist/**/*.spec.js\"",
+    "mocha": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "selenium-webdriver": "^4.0.0-alpha.1",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/selenium-webdriver": "^4.0.0"
+  }
+}
