@@ -38,7 +38,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var selenium_webdriver_1 = require("selenium-webdriver");
 var chai_1 = require("chai");
 var mocha_1 = require("mocha");
-describe("Test ", function () {
+var driver_1 = require("./driver");
+var config_1 = require("./config");
+describe("Test index page", function () {
     return __awaiter(this, void 0, void 0, function () {
         var driver;
         var _this = this;
@@ -47,10 +49,10 @@ describe("Test ", function () {
             mocha_1.before(function () { return __awaiter(_this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, new selenium_webdriver_1.Builder().forBrowser('firefox').build()];
+                        case 0: return [4 /*yield*/, driver_1.getDriver()];
                         case 1:
                             driver = _a.sent();
-                            return [4 /*yield*/, driver.get("https://campusvirtual.univalle.edu.co")];
+                            return [4 /*yield*/, driver.navigate().to(config_1.baseUrl)];
                         case 2:
                             _a.sent();
                             return [2 /*return*/];
@@ -69,14 +71,71 @@ describe("Test ", function () {
                     }
                 });
             }); });
-            it('check the page login form', function () { return __awaiter(_this, void 0, void 0, function () {
-                var form;
+            it('check the page login form (I will intentionally fail) ', function () { return __awaiter(_this, void 0, void 0, function () {
+                var form, method;
                 return __generator(this, function (_a) {
-                    form = driver.findElement(selenium_webdriver_1.By.xpath("//form[@action='https://campusvirtual.univalle.edu.co/moodle/login/index.php']"));
-                    chai_1.expect(form).to.not.false;
+                    switch (_a.label) {
+                        case 0:
+                            form = driver.findElement(selenium_webdriver_1.By.xpath("//input[@id='username']"));
+                            return [4 /*yield*/, form.getAttribute("method")];
+                        case 1:
+                            method = _a.sent();
+                            chai_1.expect(method.toLocaleLowerCase()).to.be.eq("get");
+                            return [2 /*return*/];
+                    }
+                });
+            }); });
+            it('check the page login form', function () { return __awaiter(_this, void 0, void 0, function () {
+                var form, method;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            form = driver.findElement(selenium_webdriver_1.By.xpath("//form[@action='" + config_1.baseUrl + "/login/index.php']"));
+                            return [4 /*yield*/, form.getAttribute("method")];
+                        case 1:
+                            method = _a.sent();
+                            chai_1.expect(method.toLocaleLowerCase()).to.be.eq("post");
+                            return [2 /*return*/];
+                    }
+                });
+            }); });
+            it('should have input for username', function () { return __awaiter(_this, void 0, void 0, function () {
+                var el;
+                return __generator(this, function (_a) {
+                    el = driver.findElement(selenium_webdriver_1.By.id('username'));
+                    chai_1.expect(el).to.not.be(undefined);
                     return [2 /*return*/];
                 });
             }); });
+            it('should correctly login with ases', function () {
+                return __awaiter(this, void 0, void 0, function () {
+                    var el, pass, butt;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, driver.findElement(selenium_webdriver_1.By.id('username'))];
+                            case 1:
+                                el = _a.sent();
+                                el.sendKeys('sistemas1008');
+                                return [4 /*yield*/, driver.findElement(selenium_webdriver_1.By.id('password'))];
+                            case 2:
+                                pass = _a.sent();
+                                pass.sendKeys('ases@2019');
+                                return [4 /*yield*/, driver.findElement(selenium_webdriver_1.By.className('btn-login'))];
+                            case 3:
+                                butt = _a.sent();
+                                return [4 /*yield*/, butt.click()];
+                            case 4:
+                                _a.sent();
+                                return [4 /*yield*/, driver.navigate().to(config_1.baseUrl + "/course/view.php?id=41706")];
+                            case 5:
+                                _a.sent();
+                                setTimeout(function () { }, 3000);
+                                chai_1.expect(0).to.be.eq(0);
+                                return [2 /*return*/];
+                        }
+                    });
+                });
+            });
             after(function () { return __awaiter(_this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
