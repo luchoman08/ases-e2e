@@ -15,7 +15,7 @@ describe("Test index page", async function ()  {
         expect(title).to.equal('Campus Virtual');
     });
     it('check the page login form (I will intentionally fail) ', async () => {
-        const form = driver.findElement(By.xpath("//input[@id='username']"));
+        const form = driver.findElement(By.xpath(`//form[@action='${baseUrl}/login/index.php']`));
         const method = await form.getAttribute("method");
         expect(method.toLocaleLowerCase()).to.be.eq("get");
     });
@@ -27,7 +27,7 @@ describe("Test index page", async function ()  {
     });
     it('should have input for username', async () => {
         const el = driver.findElement(By.id('username'));
-        expect(el).to.not.be(undefined);
+        expect(el).to.be.not.eq(undefined);
     });
     it('should correctly login with ases', async function () {
         const el = await driver.findElement(By.id('username'));

@@ -76,7 +76,7 @@ describe("Test index page", function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
-                            form = driver.findElement(selenium_webdriver_1.By.xpath("//input[@id='username']"));
+                            form = driver.findElement(selenium_webdriver_1.By.xpath("//form[@action='" + config_1.baseUrl + "/login/index.php']"));
                             return [4 /*yield*/, form.getAttribute("method")];
                         case 1:
                             method = _a.sent();
@@ -103,7 +103,7 @@ describe("Test index page", function () {
                 var el;
                 return __generator(this, function (_a) {
                     el = driver.findElement(selenium_webdriver_1.By.id('username'));
-                    chai_1.expect(el).to.not.be(undefined);
+                    chai_1.expect(el).to.be.not.eq(undefined);
                     return [2 /*return*/];
                 });
             }); });

@@ -1,5 +1,6 @@
 # e2e tests for ASES 
 
+**All the files for testing should be end in .spec.ts**
 
 Install nodejs > 10 (debes tener curl, si no lo tienes favor instalarlo)
 ```bash
@@ -23,3 +24,15 @@ Next:
 
 Install dependences: `npm install`  
 Run tests: `npm test`  
+
+# Common issues
+All the `describe` functions should have a long time out, otherwise the test will be fail for time, this is set with `this.timeout(6000 /* in milliseconds */)`, for example: 
+```js
+describe("Test index page", async function ()  {
+    let driver: WebDriver;
+    this.timeout(60000);
+    it("im never fail", ()=> {
+        expect(true).to.be.eq(true);
+    })
+);
+```
