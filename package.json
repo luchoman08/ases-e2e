@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tsc && mocha \"dist/**/*.spec.js\"",
-    "test-one": "tsc && mocha ",
+    "test-all": "tsc && mocha \"dist/**/*.spec.js\"",
+    "test-some": "tsc && mocha ",
     "mocha": "mocha"
   },
   "author": "",
