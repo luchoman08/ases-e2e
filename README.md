@@ -25,6 +25,12 @@ Next:
 Install dependences: `npm install`  
 Run tests: `npm run test`  
 
+
+ # Test only one file
+
+ ```bash
+ npm run test-one dist/some-test.spec.js
+ ```
 # Common issues
 All the `describe` functions should have a long time out, otherwise the test will be fail for time, this is set with `this.timeout(6000 /* in milliseconds */)`, for example: 
 ```js
