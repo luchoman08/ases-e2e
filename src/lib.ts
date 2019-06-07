@@ -1,4 +1,7 @@
 import * as qs from 'qs';
+
+
+
 export function generateUrl(baseUrl: string, path: string, courseId?: string|number, instanceId?:string|number): string{
     var params = {};
     if(courseId) {
@@ -11,5 +14,5 @@ export function generateUrl(baseUrl: string, path: string, courseId?: string|num
     if(params !== {}) {
         paramsString = qs.stringify(params);
     }
-    return `${baseUrl}/${path}${paramsString}`;
+    return `${baseUrl}/${path}?${paramsString}`;
 }
