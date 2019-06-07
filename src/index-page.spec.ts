@@ -34,11 +34,12 @@ describe("Test index page", async function ()  {
         el.sendKeys('sistemas1008');
         const pass = await driver.findElement(By.id('password'));
         pass.sendKeys('ases@2019');
-        const butt = await driver.findElement(By.className('btn-login'));
+        var butt = await driver.findElement(By.className('btn-login'));
+        if(!butt) {
+            butt = await driver.findElement(By.xpath('//form/button[@type="submit"]'));
+        }
         await butt.click();
         await driver.navigate().to(`${baseUrl}/course/view.php?id=41706`);
-        setTimeout(()=>{}, 3000);
-        expect(0).to.be.eq(0);
     });
     after(async () => {
         await driver.close();
