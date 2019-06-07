@@ -23,7 +23,7 @@ rm geckodriver-v0.23.0-linux64.tar.gz
 Next:
 
 Install dependences: `npm install`  
-Run tests: `npm test`  
+Run tests: `npm run test`  
 
 # Common issues
 All the `describe` functions should have a long time out, otherwise the test will be fail for time, this is set with `this.timeout(6000 /* in milliseconds */)`, for example: 
