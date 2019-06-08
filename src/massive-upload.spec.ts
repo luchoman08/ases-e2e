@@ -36,7 +36,7 @@ describe("Massive upload", function () {
         await driver
         .findElement(By.id('send-file'))
         .click();
-        const alert_messages = await driver.findElement(By.xpath("/span[@id='user-notifications]'"))
+        const alert_messages = await driver.findElement(By.xpath("/span[@id='user-notifications']"))
         console.log(alert_messages);
     });
 });
