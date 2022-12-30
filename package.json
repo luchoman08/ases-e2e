@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "selenium-webdriver": "^4.0.0-alpha.1",
     "tsc": "^1.20150623.0",
     "typescript": "^3.4.5"
